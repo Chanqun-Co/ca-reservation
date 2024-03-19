@@ -21,6 +21,10 @@ spring:
             mode: none
     show-sql: false
 
+
+kafka:
+  url: 127.0.0.1:29092
+
 server:
   port: 0
 
@@ -32,3 +36,4 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
+
