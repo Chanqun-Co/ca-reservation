@@ -12,8 +12,3 @@ public interface CreateReservation {
     void create(CreateReservationCommand command);
 }
 
-@Data
-class CreateReservationCommand {
-    long host;
-    long guest;
-}
