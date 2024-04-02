@@ -1,9 +1,7 @@
 package io.sharing.server.core.reservation.application.port.inp;
 
-import lombok.Data;
 import org.springframework.stereotype.Service;
 
-// UseCase
 @Service
 public interface CreateReservation {
     /**

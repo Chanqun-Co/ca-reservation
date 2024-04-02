@@ -18,10 +18,12 @@ import static io.sharing.server.core.reservation.domain.ReservationStatus.*;
 public class Reservation extends BaseEntity {
 
     /** 호스트 UUID를 통한 정보 */
-    String host;
+    String hostId;
 
     /** 게스트 UUID를 통한 정보*/
-    String guest;
+    String guestId;
+
+    String productId;
 
     /** 상태 */
     @Enumerated(EnumType.STRING)
@@ -68,11 +70,12 @@ public class Reservation extends BaseEntity {
         }
     }
 
-    public static Reservation createReservation(String guest, String host) {
+    public static Reservation createReservation(String guest, String host, String productId) {
         Reservation reservation = new Reservation();
-        reservation.guest = guest;
-        reservation.host = host;
-        reservation.status = APPROVED;
+        reservation.guestId = guest;
+        reservation.hostId = host;
+        reservation.productId = productId;
+        reservation.status = PENDING;
         reservation.createdAt = OffsetDateTime.now();
 
         return reservation;

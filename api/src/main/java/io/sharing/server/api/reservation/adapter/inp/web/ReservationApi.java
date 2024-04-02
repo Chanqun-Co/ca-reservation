@@ -1,22 +1,27 @@
 package io.sharing.server.api.reservation.adapter.inp.web;
 
+import io.sharing.server.api.reservation.application.port.inp.ReservationCreate;
 import io.sharing.server.core.reservation.application.port.inp.CreateReservation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/reservations")
+@RequestMapping("/ca-reservation")
 @RequiredArgsConstructor
+@Slf4j
 public class ReservationApi {
 
-    private final CreateReservation createReservation;
+    private final ReservationCreate reservationCreate;
+
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
 
     @PostMapping("/create")
     public void create(@RequestBody ReservationReq req) {
-        createReservation.create(req.toCommand());
+        reservationCreate.create(req);
     }
 }
