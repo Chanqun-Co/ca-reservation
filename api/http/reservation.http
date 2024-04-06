@@ -1,14 +1,13 @@
 #### 예약 가입
-POST {{reservation-api}}/ca-reservation/create
-#POST http://192.0.0.1:8080/ca-reservation/create
+#POST {{reservation-api}}/ca-reservation/create
+POST http://192.168.1.103:8000/ca-reservation/create
 Content-Type: application/json
 
 {
  "guestId" : "UUID123456",
-  "hostId": "UUID345678",
   "productId": "1"
 }
 
 #### 테스트
-GET http://192.168.45.29:8000/ca-reservation/test
+GET http://192.168.1.103:8000/ca-reservation/test
 #GET {{home-address}}:8080/ca-reservation/test

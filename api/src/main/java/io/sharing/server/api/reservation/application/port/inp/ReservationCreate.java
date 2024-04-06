@@ -32,15 +32,16 @@ public class ReservationCreate {
      * 상품 정보 조회
      * */
     private ProductDto getProductInfo(String prodId) {
-        ProductDto productDto;
+        ProductDto productDto = new ProductDto();
+        productDto.setProductId(prodId);
+        productDto.setHostId("UUID345678");
         // RestTemplate
-        try {
-            productDto = restTemplate.getForObject("", ProductDto.class);
-        } catch (HttpClientErrorException e) {
-            throw e;
-        }
+//        try {
+//            productDto = restTemplate.getForObject("", ProductDto.class);
+//        } catch (HttpClientErrorException e) {
+//            throw e;
+//        }
         return productDto;
-//        return null;
     }
 
     /**
@@ -53,7 +54,7 @@ public class ReservationCreate {
     /**
      * 상품 상태 변경
      * */
-    private void changeProductStatus() {
+    private void changeProductStatus(String prodId) {
         // outbox patturn
     }
 
