@@ -4,15 +4,15 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TestProducer {
+public class KafkaProducer {
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public TestProducer(KafkaTemplate<String, Object> kafkaTemplate) {
+    public KafkaProducer(KafkaTemplate<String, Object> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void create() {
-        kafkaTemplate.send("topic", "test Kafka");
+    public void create(String message, String topicName) {
+        kafkaTemplate.send(topicName, message);
     }
 
 }

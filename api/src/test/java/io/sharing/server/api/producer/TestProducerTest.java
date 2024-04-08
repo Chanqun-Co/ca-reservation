@@ -8,10 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 class TestProducerTest {
 
     @Autowired
-    private TestProducer testProducer;
+    private KafkaProducer testProducer;
 
     @Test
     void test() {
-        testProducer.create();
+        testProducer.create("test", "topic");
     }
 }

@@ -7,10 +7,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableScheduling
 @ComponentScan(basePackages = {"io.sharing.server.core", "io.sharing.server.api"})
 @EntityScan(basePackages = {"io.sharing.server.core"})
 @EnableJpaRepositories(basePackages = {"io.sharing.server.core"})

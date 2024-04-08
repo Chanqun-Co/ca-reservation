@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class ReservationServiceTest {
 
-    @Autowired
+//    @Autowired
     private ReservationRepository reservationRepository;
 
 //    @BeforeEach

@@ -1,6 +1,9 @@
 package io.sharing.server.api.reservation.application.port.inp;
 
+import com.google.gson.Gson;
 import io.sharing.server.api.reservation.adapter.inp.web.ReservationReq;
+import io.sharing.server.core.outbox.application.port.outp.OutboxRepository;
+import io.sharing.server.core.outbox.domain.Outbox;
 import io.sharing.server.core.product.ProductDto;
 import io.sharing.server.core.reservation.application.port.inp.CreateReservation;
 import io.sharing.server.core.reservation.application.port.inp.CreateReservationCommand;
@@ -17,6 +20,8 @@ public class ReservationCreate {
 
     private final RestTemplate restTemplate;
 
+    private final OutboxRepository outboxRepository;
+
     public void create(ReservationReq req) {
         // 상품 정보 조회
         ProductDto product = getProductInfo(req.getProductId());
@@ -24,8 +29,10 @@ public class ReservationCreate {
         createReservation.create(req.toCommand(product));
 
         // Kafka 결제요청 서비스
+        requestPayment(product);
 
         // 상품 상태변경 서비스
+        changeProductStatus(product);
     }
 
     /**
@@ -47,15 +54,27 @@ public class ReservationCreate {
     /**
      * 결제 요청
      * */
-    private void requestPayment() {
-        // outbox patturn
+    private void requestPayment(ProductDto product) {
+        String message = convertToJSONString(product);
+        Outbox outbox = new Outbox(message, "payment");
+
+        outboxRepository.save(outbox);
     }
 
     /**
      * 상품 상태 변경
      * */
-    private void changeProductStatus(String prodId) {
-        // outbox patturn
+    private void changeProductStatus(ProductDto product) {
+        String message = convertToJSONString(product);
+        Outbox outbox = new Outbox(message, "product");
+
+        outboxRepository.save(outbox);
+    }
+
+    private String convertToJSONString(Object obj) {
+        Gson gson = new Gson();
+
+        return gson.toJson(obj);
     }
 
 }

@@ -44,6 +44,9 @@ subprojects {
         testImplementation("org.springframework.boot:spring-boot-starter-test")
 
         implementation("org.springframework.kafka:spring-kafka")
+
+        implementation("com.google.code.gson:gson:2.10.1")
+
     }
 
     dependencyManagement {
