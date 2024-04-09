@@ -11,7 +11,7 @@ public class ReservationReq {
     private String guestId;
 
     @NonNull
-    private String productId;
+    private Long productId;
 
     public CreateReservationCommand toCommand(ProductDto product) {
         return CreateReservationCommand.builder()

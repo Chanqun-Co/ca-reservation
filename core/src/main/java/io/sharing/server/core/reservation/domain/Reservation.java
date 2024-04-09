@@ -23,7 +23,7 @@ public class Reservation extends BaseEntity {
     /** 게스트 UUID를 통한 정보*/
     String guestId;
 
-    String productId;
+    Long productId;
 
     /** 상태 */
     @Enumerated(EnumType.STRING)
@@ -70,7 +70,7 @@ public class Reservation extends BaseEntity {
         }
     }
 
-    public static Reservation createReservation(String guest, String host, String productId) {
+    public static Reservation createReservation(String guest, String host, Long productId) {
         Reservation reservation = new Reservation();
         reservation.guestId = guest;
         reservation.hostId = host;

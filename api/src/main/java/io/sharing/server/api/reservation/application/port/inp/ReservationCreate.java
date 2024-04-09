@@ -3,6 +3,7 @@ package io.sharing.server.api.reservation.application.port.inp;
 import com.google.gson.Gson;
 import io.sharing.server.api.reservation.adapter.inp.web.ReservationReq;
 import io.sharing.server.core.outbox.application.port.outp.OutboxRepository;
+import io.sharing.server.core.outbox.application.service.OutboxService;
 import io.sharing.server.core.outbox.domain.Outbox;
 import io.sharing.server.core.product.ProductDto;
 import io.sharing.server.core.reservation.application.port.inp.CreateReservation;
@@ -20,7 +21,7 @@ public class ReservationCreate {
 
     private final RestTemplate restTemplate;
 
-    private final OutboxRepository outboxRepository;
+    private final OutboxService outboxService;
 
     public void create(ReservationReq req) {
         // 상품 정보 조회
@@ -38,7 +39,7 @@ public class ReservationCreate {
     /**
      * 상품 정보 조회
      * */
-    private ProductDto getProductInfo(String prodId) {
+    private ProductDto getProductInfo(Long prodId) {
         ProductDto productDto = new ProductDto();
         productDto.setProductId(prodId);
         productDto.setHostId("UUID345678");
@@ -58,7 +59,7 @@ public class ReservationCreate {
         String message = convertToJSONString(product);
         Outbox outbox = new Outbox(message, "payment");
 
-        outboxRepository.save(outbox);
+        outboxService.save(outbox);
     }
 
     /**
@@ -68,7 +69,7 @@ public class ReservationCreate {
         String message = convertToJSONString(product);
         Outbox outbox = new Outbox(message, "product");
 
-        outboxRepository.save(outbox);
+        outboxService.save(outbox);
     }
 
     private String convertToJSONString(Object obj) {

@@ -1,4 +1,4 @@
-package io.sharing.server.api;
+package io.sharing.server.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,20 +11,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@EnableDiscoveryClient
-@EnableScheduling
-@ComponentScan(basePackages = {"io.sharing.server.core", "io.sharing.server.api"})
-//@EntityScan(basePackages = {"io.sharing.server.core"})
-//@EnableJpaRepositories(basePackages = {"io.sharing.server.core"})
-public class ApiApplication {
-
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
+public class CoreApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ApiApplication.class, args);
+        SpringApplication.run(CoreApplication.class, args);
     }
 
 }

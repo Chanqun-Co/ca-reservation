@@ -20,4 +20,8 @@ public class OutboxService {
     public void deleteByEntity(Outbox outbox) {
         outboxRepository.delete(outbox);
     }
+
+    public void save(Outbox outbox) {
+        outboxRepository.save(outbox);
+    }
 }

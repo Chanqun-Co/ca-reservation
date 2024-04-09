@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ProductDto {
-    private String productId;
+    private Long productId;
 
     private String hostId;
 }

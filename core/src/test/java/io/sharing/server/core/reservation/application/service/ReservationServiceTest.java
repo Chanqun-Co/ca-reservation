@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class ReservationServiceTest {
 
-//    @Autowired
+    @Autowired
     private ReservationRepository reservationRepository;
 
 //    @BeforeEach
@@ -36,7 +36,7 @@ class ReservationServiceTest {
     @BeforeEach
     @Transactional
     public void save() {
-        Reservation reservation = Reservation.createReservation("UUID345678", "UUID123456", "1");
+        Reservation reservation = Reservation.createReservation("UUID345678", "UUID123456", 1L);
         reservationRepository.save(reservation);
     }
 

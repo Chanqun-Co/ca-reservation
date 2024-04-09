@@ -40,9 +40,9 @@ public class ReservationService implements CreateReservation {
     }
 
 
-    private boolean checkForDuplicates(String productId) {
+    private boolean checkForDuplicates(Long productId) {
         boolean result = true;
-        Optional<Reservation> optional = reservationRepository.findPendingReservationByProdId(productId);
+        Optional<Reservation> optional = reservationRepository.findPendingReservationByProdId(String.valueOf(productId));
 
         // 동일 상품으로 예약된 정보가 없는 경우
         if (optional.isEmpty()) {
