@@ -14,14 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 @EnableScheduling
 @ComponentScan(basePackages = {"io.sharing.server.core", "io.sharing.server.api"})
-//@EntityScan(basePackages = {"io.sharing.server.core"})
-//@EnableJpaRepositories(basePackages = {"io.sharing.server.core"})
 public class ApiApplication {
-
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(ApiApplication.class, args);

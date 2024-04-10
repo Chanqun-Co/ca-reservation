@@ -1,6 +1,6 @@
-package io.sharing.server.api.outbox;
+package io.sharing.server.api.kafka.outbox;
 
-import io.sharing.server.api.producer.KafkaProducer;
+import io.sharing.server.api.kafka.producer.KafkaProducer;
 import io.sharing.server.core.outbox.application.service.OutboxService;
 import io.sharing.server.core.outbox.domain.Outbox;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -17,7 +17,7 @@ public record OutboxRetryTask(OutboxService outboxService, KafkaProducer produce
         List<Outbox> outboxes = outboxService.findAll();
 
         outboxes.stream().forEach(e -> {
-            producer.create(e.getMessage(), e.getTopicName());
+            producer.create(e.getTopicName(), e.getMessage());
             outboxService.deleteByEntity(e);
         });
     }

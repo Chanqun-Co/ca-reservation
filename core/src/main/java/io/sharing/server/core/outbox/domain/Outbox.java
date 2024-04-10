@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Getter
 public class Outbox extends BaseEntity {
 
-    private String message;
-
     private String topicName;
+    private String message;
 }

@@ -1,4 +1,4 @@
-package io.sharing.server.api.producer;
+package io.sharing.server.api.kafka.producer;
 
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ public class KafkaProducer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void create(String message, String topicName) {
+    public void create(String topicName, String message) {
         kafkaTemplate.send(topicName, message);
     }
 

@@ -21,7 +21,14 @@ public class OutboxService {
         outboxRepository.delete(outbox);
     }
 
-    public void save(Outbox outbox) {
+
+    public void requestPayment(String message) {
+        Outbox outbox = new Outbox("payment", message);
+        outboxRepository.save(outbox);
+    }
+
+    public void changeProductStatus(String message) {
+        Outbox outbox = new Outbox("product", message);
         outboxRepository.save(outbox);
     }
 }

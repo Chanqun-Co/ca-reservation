@@ -17,13 +17,13 @@ import static io.sharing.server.core.reservation.domain.ReservationStatus.*;
 @Entity
 public class Reservation extends BaseEntity {
 
+    Long productId;
+
     /** 호스트 UUID를 통한 정보 */
     String hostId;
 
     /** 게스트 UUID를 통한 정보*/
     String guestId;
-
-    Long productId;
 
     /** 상태 */
     @Enumerated(EnumType.STRING)

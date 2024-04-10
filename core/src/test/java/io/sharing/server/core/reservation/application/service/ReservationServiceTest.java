@@ -1,7 +1,5 @@
 package io.sharing.server.core.reservation.application.service;
 
-import io.sharing.server.core.product.ProductDto;
-import io.sharing.server.core.reservation.application.port.inp.CreateReservationCommand;
 import io.sharing.server.core.reservation.application.port.outp.ReservationRepository;
 import io.sharing.server.core.reservation.domain.Reservation;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,24 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ReservationServiceTest {
 
     @Autowired
     private ReservationRepository reservationRepository;
-
-//    @BeforeEach
-//    public void init() {
-//        ProductDto productDto = new ProductDto();
-//        productDto.setProductId("1");
-//        productDto.setHostId("UUID345678");
-//
-//        createReservationCommand = new CreateReservationCommand();
-//        createReservationCommand.setGuestId("UUID123456");
-//        createReservationCommand.setProduct(productDto);
-//    }
 
     @BeforeEach
     @Transactional

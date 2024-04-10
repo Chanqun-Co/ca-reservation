@@ -1,4 +1,4 @@
-package io.sharing.server.api.consumer;
+package io.sharing.server.api.kafka.consumer;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
