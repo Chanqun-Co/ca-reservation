@@ -2,7 +2,6 @@ package io.sharing.server.api.reservation.application.port.inp;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import io.sharing.server.api.product.application.port.inp.ProductFind;
 import io.sharing.server.api.reservation.adapter.inp.web.ReservationReq;
 import io.sharing.server.core.outbox.application.service.OutboxService;
@@ -24,7 +23,7 @@ public class ReservationCreate {
 
     @Transactional
     public void create(ReservationReq req) {
-        ProductDto productDto = productFind.getProductInfoAndLock(req.getProductId()); // 여기서 상품 상태 홀딩하도록 하기. FeignClient 활용하기.
+        ProductDto productDto = productFind.getProductInfoAndLock(req.getProductId());
 
         createReservation.create(req.toCommand(productDto));
 
