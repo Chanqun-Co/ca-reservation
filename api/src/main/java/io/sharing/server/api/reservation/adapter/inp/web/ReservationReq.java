@@ -1,6 +1,6 @@
 package io.sharing.server.api.reservation.adapter.inp.web;
 
-import io.sharing.server.core.product.ProductDto;
+import io.sharing.server.core.product.Product;
 import io.sharing.server.core.reservation.application.port.inp.CreateReservationCommand;
 import lombok.Getter;
 import lombok.NonNull;
@@ -13,7 +13,7 @@ public class ReservationReq {
     @NonNull
     private Long productId;
 
-    public CreateReservationCommand toCommand(ProductDto product) {
+    public CreateReservationCommand toCommand(Product product) {
         return CreateReservationCommand.builder()
                 .guestId(this.guestId)
                 .product(product)

@@ -70,10 +70,10 @@ public class Reservation extends BaseEntity {
         }
     }
 
-    public static Reservation createReservation(String guest, String host, Long productId) {
+    public static Reservation createReservation(String guestId, String hostId, Long productId) {
         Reservation reservation = new Reservation();
-        reservation.guestId = guest;
-        reservation.hostId = host;
+        reservation.guestId = guestId;
+        reservation.hostId = hostId;
         reservation.productId = productId;
         reservation.status = PENDING;
         reservation.createdAt = OffsetDateTime.now();

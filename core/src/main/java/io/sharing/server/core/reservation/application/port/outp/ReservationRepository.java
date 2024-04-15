@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
     @Query("SELECT r FROM Reservation r WHERE r.productId = :productId AND r.status = 'PENDING'")
-    Optional<Reservation> findPendingReservationByProdId(@Param("productId") String productId);
+    Optional<Reservation> findPendingReservationByProductId(@Param("productId") String productId);
 }

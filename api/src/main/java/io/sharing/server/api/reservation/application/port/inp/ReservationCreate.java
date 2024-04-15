@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.sharing.server.api.product.application.port.inp.ProductFind;
 import io.sharing.server.api.reservation.adapter.inp.web.ReservationReq;
 import io.sharing.server.core.outbox.application.service.OutboxService;
-import io.sharing.server.core.product.ProductDto;
+import io.sharing.server.core.product.Product;
 import io.sharing.server.core.reservation.application.port.inp.CreateReservation;
 import io.sharing.server.core.support.stereotype.UseCase;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ public class ReservationCreate {
 
     @Transactional
     public void create(ReservationReq req) {
-        ProductDto productDto = productFind.getProductInfoAndLock(req.getProductId());
+        Product productDto = productFind.getProductInfoAndLock(req.getProductId());
 
         createReservation.create(req.toCommand(productDto));
 
@@ -36,7 +36,7 @@ public class ReservationCreate {
     /**
      * 결제 요청
      * */
-    private void requestPayment(ProductDto product) {
+    private void requestPayment(Product product) {
         String message = convertToJSONString(product);
 
         outboxService.requestPayment(message);
@@ -45,7 +45,7 @@ public class ReservationCreate {
     /**
      * 상품 상태 변경
      * */
-    private void changeProductStatus(ProductDto product) {
+    private void changeProductStatus(Product product) {
         String message = convertToJSONString(product);
 
         outboxService.changeProductStatus(message);

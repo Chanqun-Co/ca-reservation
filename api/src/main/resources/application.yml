@@ -37,3 +37,6 @@ eureka:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
 
+product:
+  client:
+    url: https://localhost:8000/ca-product
