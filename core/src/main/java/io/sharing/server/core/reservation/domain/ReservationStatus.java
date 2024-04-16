@@ -23,8 +23,6 @@ public enum ReservationStatus {
 
     PENDING();
 
-//    private List<ReservationStatus> nextStatuses;
-
     boolean canChangeTo(ReservationStatus status) {
         boolean result = true;
         switch (this) {

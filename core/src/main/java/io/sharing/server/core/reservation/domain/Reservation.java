@@ -17,13 +17,13 @@ import static io.sharing.server.core.reservation.domain.ReservationStatus.*;
 @Entity
 public class Reservation extends BaseEntity {
 
-    /** 호스트 */
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    User host;
+    Long productId;
 
-    /** 게스트 */
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    User guest;
+    /** 호스트 UUID를 통한 정보 */
+    String hostId;
+
+    /** 게스트 UUID를 통한 정보*/
+    String guestId;
 
     /** 상태 */
     @Enumerated(EnumType.STRING)
@@ -70,5 +70,14 @@ public class Reservation extends BaseEntity {
         }
     }
 
-    // compainon object 의미 찾고 정리
+    public static Reservation createReservation(String guestId, String hostId, Long productId) {
+        Reservation reservation = new Reservation();
+        reservation.guestId = guestId;
+        reservation.hostId = hostId;
+        reservation.productId = productId;
+        reservation.status = PENDING;
+        reservation.createdAt = OffsetDateTime.now();
+
+        return reservation;
+    }
 }
